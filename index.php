@@ -35,18 +35,22 @@ if ( !isset($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']) ) {
 
 $d = $_POST;
 
-if ( !isset($d['domain'], $d['type'], $d['name'], $d['value']) ) {
+if ( !isset($d['domain'], $d['type'], $d['name']) ) {
 	err("Missing params");
 }
 
 if ( isset($d['add']) ) {
+	if ( !isset($d['value']) ) {
+		err("Missing params");
+	}
+
 	$client = client();
 	$domain = domain($client, $d['domain']);
 
 	$record = new DnsRecord(0, $d['name'], $d['type'], $d['value'], @$d['ttl'] ?: 3600, @$d['prio'] ?: '');
 
 	if ( !$client->addDnsRecord($domain, $record) ) {
-		err("Couldn't delete. Don't know why.");
+		err("Couldn't add. Don't know why.");
 	}
 
 	exit("Record added.\n");
@@ -56,26 +60,25 @@ elseif ( isset($d['delete']) ) {
 	$client = client();
 	$domain = domain($client, $d['domain']);
 
-	$records = $client->getDnsRecords($domain);
-	$record = array_reduce($records, function($result, DnsRecord $record) use ($d) {
-		if ( $record->type == strtoupper($d['type']) && $record->name == $d['name'] && $record->value == $d['value'] ) {
-			if ( empty($d['ttl']) || $d['ttl'] == $record->ttl ) {
-				if ( empty($d['prio']) || $d['prio'] == $record->prio ) {
-					return $record;
-				}
-			}
+	$conditions = array_intersect_key($d, array_flip(['type', 'name', 'value', 'ttl', 'prio']));
+	$conditions['type'] = strtoupper($conditions['type']);
+	$records = $client->findDnsRecords($domain, $conditions);
+
+	$deleted = 0;
+	foreach ( $records as $record ) {
+		if ( $client->deleteDnsRecord($domain, $record) ) {
+			$deleted++;
 		}
-		return $result;
-	}, null);
-	if ( !$record ) {
-		err("No record with this type, name, value, (prio, ttl).");
 	}
 
-	if ( !$client->deleteDnsRecord($domain, $record) ) {
+	if ( $deleted == 0 && count($records) > 0 ) {
 		err("Couldn't delete. Don't know why.");
 	}
+	elseif ( $deleted < count($records) ) {
+		err("Only deleted $deleted / " . count($records) . " records.");
+	}
 
-	exit("Record deleted.\n");
+	exit("Deleted $deleted records.\n");
 }
 
 err("Only 'add' & 'delete' supported.");
