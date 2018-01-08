@@ -1,0 +1,15 @@
+{
+    "name": "rdx/fxw-api-server",
+    "description": "HTTP server for Scraper FXW API",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rudie Dirkx",
+            "email": "github@hotblocks.nl"
+        }
+    ],
+    "require": {
+        "rdx/fxw-api": "^1.0"
+    }
+}
