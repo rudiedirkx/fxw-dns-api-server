@@ -49,8 +49,11 @@ if ( isset($d['add']) ) {
 
 	$record = new DnsRecord(0, $d['name'], $d['type'], $d['value'], @$d['ttl'] ?: 3600, @$d['prio'] ?: '');
 
-	if ( !$client->addDnsRecord($domain, $record) ) {
-		err("Couldn't add. Don't know why.");
+	try {
+		$client->addDnsRecord($domain, $record);
+	}
+	catch ( Exception $ex ) {
+		err("ERROR - " . $ex->getMessage());
 	}
 
 	exit("Record added.\n");
@@ -65,17 +68,22 @@ elseif ( isset($d['delete']) ) {
 	$records = $client->findDnsRecords($domain, $conditions);
 
 	$deleted = 0;
+	$errors = [];
 	foreach ( $records as $record ) {
-		if ( $client->deleteDnsRecord($domain, $record) ) {
+		try {
+			$client->deleteDnsRecord($domain, $record);
 			$deleted++;
+		}
+		catch ( Exception $ex ) {
+			$errors[] = $ex->getMessage();
 		}
 	}
 
 	if ( $deleted == 0 && count($records) > 0 ) {
-		err("Couldn't delete. Don't know why.");
+		err("ERROR - " . implode(' / ', $errors));
 	}
 	elseif ( $deleted < count($records) ) {
-		err("Only deleted $deleted / " . count($records) . " records.");
+		err("Only deleted $deleted / " . count($records) . " records. Errors: " . implode(' / ', $errors));
 	}
 
 	exit("Deleted $deleted records.\n");

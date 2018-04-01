@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf2d4f1d1b821d4d3fea1b66e7e51021",
+    "content-hash": "ded1b9295e14c8c20d00fbf178cde622",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -239,16 +239,16 @@
         },
         {
             "name": "rdx/fxw-api",
-            "version": "1.0",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rudiedirkx/fxw-dns-api-client.git",
-                "reference": "119e96de2f3dcc4e021cc0f8d516b42033fd5bba"
+                "reference": "6ebd1e91cff935857f5506058e2bf2429f8ae869"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rudiedirkx/fxw-dns-api-client/zipball/119e96de2f3dcc4e021cc0f8d516b42033fd5bba",
-                "reference": "119e96de2f3dcc4e021cc0f8d516b42033fd5bba",
+                "url": "https://api.github.com/repos/rudiedirkx/fxw-dns-api-client/zipball/6ebd1e91cff935857f5506058e2bf2429f8ae869",
+                "reference": "6ebd1e91cff935857f5506058e2bf2429f8ae869",
                 "shasum": ""
             },
             "require": {
@@ -272,7 +272,7 @@
                 }
             ],
             "description": "FXW DNS API by scraping",
-            "time": "2018-01-08T15:03:18+00:00"
+            "time": "2018-04-01T01:16:37+00:00"
         },
         {
             "name": "rdx/js-dom",
