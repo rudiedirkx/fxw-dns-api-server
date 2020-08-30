@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e3238a39492ede383a2ddd869a51a26",
+    "content-hash": "df08c7ccd06330c02e6945406f33b045",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -336,12 +336,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/rudiedirkx/fxw-dns-api-client.git",
-                "reference": "8ca03e48497b9127bb9b38700854ed8e68bb6f85"
+                "reference": "99207c7e4e10472c397e317b4c1cc93aa7c479c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rudiedirkx/fxw-dns-api-client/zipball/8ca03e48497b9127bb9b38700854ed8e68bb6f85",
-                "reference": "8ca03e48497b9127bb9b38700854ed8e68bb6f85",
+                "url": "https://api.github.com/repos/rudiedirkx/fxw-dns-api-client/zipball/99207c7e4e10472c397e317b4c1cc93aa7c479c9",
+                "reference": "99207c7e4e10472c397e317b4c1cc93aa7c479c9",
                 "shasum": ""
             },
             "require": {
@@ -365,20 +365,20 @@
                 }
             ],
             "description": "FXW DNS API by scraping",
-            "time": "2020-08-30T13:02:09+00:00"
+            "time": "2020-08-30T13:13:19+00:00"
         },
         {
             "name": "rdx/js-dom",
-            "version": "1.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rudiedirkx/php-js-dom.git",
-                "reference": "c36b2ba7580a344fb8e2a305a784e25698cd642f"
+                "reference": "9371c9447ad0ca661d644d092e4f40c24e57242a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rudiedirkx/php-js-dom/zipball/c36b2ba7580a344fb8e2a305a784e25698cd642f",
-                "reference": "c36b2ba7580a344fb8e2a305a784e25698cd642f",
+                "url": "https://api.github.com/repos/rudiedirkx/php-js-dom/zipball/9371c9447ad0ca661d644d092e4f40c24e57242a",
+                "reference": "9371c9447ad0ca661d644d092e4f40c24e57242a",
                 "shasum": ""
             },
             "require": {
@@ -401,7 +401,7 @@
                 }
             ],
             "description": "JS-like DOM traversal",
-            "time": "2018-01-07T01:03:25+00:00"
+            "time": "2018-09-19T10:23:11+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -789,11 +789,11 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "rdx/fxw-api": 20
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],

@@ -11,5 +11,7 @@
     ],
     "require": {
         "rdx/fxw-api": "dev-master"
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
