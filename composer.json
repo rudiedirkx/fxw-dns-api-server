@@ -10,6 +10,6 @@
         }
     ],
     "require": {
-        "rdx/fxw-api": "^1.1"
+        "rdx/fxw-api": "dev-master"
     }
 }
